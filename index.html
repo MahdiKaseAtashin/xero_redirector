@@ -1,18 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Redirecting...</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Status</title>
+    <style>
+      /* Base styles for body and layout */
+      body {
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      /* Responsive typography for the title */
+      h1 {
+        font-size: 2rem;
+        color: #1ab4d7; /* Initial color */
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease-in-out;
+        max-width: 90%;
+        word-wrap: break-word;
+        transition: color 0.3s ease;
+      }
+
+      /* Container for animations */
+      .animation-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 30px;
+      }
+
+      /* Spinning success animation */
+      .success-animation {
+        width: 100px;
+        height: 100px;
+        border: 6px solid #1ab4d7; /* Initial color */
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        transition: border-color 0.3s ease;
+      }
+
+      /* Checkmark done animation */
+      .done-animation {
+        width: 100px;
+        height: 100px;
+        display: none;
+        position: absolute;
+        text-align: center;
+        line-height: 100px;
+        font-size: 3rem;
+        color: #4caf50;
+        border: 6px solid #4caf50; /* Green color after clicking */
+        border-radius: 50%;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      /* Responsive and interactive button */
+      .button {
+        padding: 15px 20px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #1ab4d7; /* Initial color */
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        animation: fadeIn 1s ease-in-out;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+        max-width: 90%;
+        box-sizing: border-box;
+      }
+
+      .button:hover {
+        background-color: #199dc1;
+        transform: scale(1.05);
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive scaling for small screens */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+        .animation-container {
+          width: 80px;
+          height: 80px;
+        }
+        .success-animation,
+        .done-animation {
+          width: 80px;
+          height: 80px;
+          line-height: 80px;
+          font-size: 2.5rem;
+        }
+        .button {
+          padding: 10px 15px;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
     <script>
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get("code");
-      const state = params.get("state");
+      function openApp() {
+        // Extract query parameters
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        const state = params.get("state");
 
+<<<<<<< HEAD
+        // Construct the redirect URL
+        const redirectUrl = `open://myApp.xero_pkce_login_test/login-callback?code=${code}&state=${state}`;
+=======
        const redirectUrl = `open://myApp.xero_pkce_login_test/login-callback?code=${code}&state=${state}`;
+>>>>>>> c1baa41185d3ca95b088180c3361f22ee81cff72
 
-      window.location.href = redirectUrl;
+        // Redirect to the constructed URL
+        window.location.href = redirectUrl;
+
+        // Update the animation and title
+        document.querySelector(".success-animation").style.display = "none";
+        document.querySelector(".done-animation").style.display = "block";
+        document.querySelector("h1").innerText = "Logged in Successfully";
+
+        // Change colors to green
+        document.querySelector("h1").style.color = "#4caf50";
+        document.querySelector(".done-animation").style.color = "#4caf50";
+      }
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <h1>If you want to finish logging in, click the Open App button below</h1>
+    <div class="animation-container">
+      <div class="success-animation"></div>
+      <div class="done-animation">✔</div>
+    </div>
+    <button class="button" onclick="openApp()">Open the App</button>
   </body>
 </html>
