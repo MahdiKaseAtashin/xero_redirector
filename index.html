@@ -137,15 +137,14 @@
         const code = params.get("code");
         const state = params.get("state");
 
-<<<<<<< HEAD
         // Construct the redirect URL
         const redirectUrl = `open://myApp.xero_pkce_login_test/login-callback?code=${code}&state=${state}`;
-=======
-       const redirectUrl = `open://myApp.xero_pkce_login_test/login-callback?code=${code}&state=${state}`;
->>>>>>> c1baa41185d3ca95b088180c3361f22ee81cff72
 
-        // Redirect to the constructed URL
-        window.location.href = redirectUrl;
+        // Debug: Log the URL
+        console.log("Redirect URL:", redirectUrl);
+
+        // Open the app via the custom scheme
+        window.open(redirectUrl, "_self");
 
         // Update the animation and title
         document.querySelector(".success-animation").style.display = "none";
