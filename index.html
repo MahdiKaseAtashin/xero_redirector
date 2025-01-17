@@ -135,10 +135,9 @@
         // Extract query parameters
         const params = new URLSearchParams(window.location.search);
         const code = params.get("code");
-        const state = params.get("state");
 
         // Construct the redirect URL
-        const redirectUrl = `open://myApp.xero_pkce_login_test/login-callback?code=${code}&state=${state}`;
+        const redirectUrl = `app://open.xero_pkce_login_test.app/login-callback?code=${code}`;
 
         // Debug: Log the URL
         console.log("Redirect URL:", redirectUrl);
